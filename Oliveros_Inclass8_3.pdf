@@ -1,0 +1,17 @@
+Edgar Oliveros
+InClass 8_3
+10/27/14
+
+setwd("C:\\Users\\Fernando\\CMDA\\InClass8_3')
+
+myData <- load("fdata.RData")
+
+attach(myData)
+
+model	<- lm(ssc ~ som1 + som2 + som3 + som4 + som5 + som6 + som7
+			+ som8 + som9 + som10 + som11 + som12 + som13 + som14 + age)
+			
+summary(model)
+
+The most representative results are those that compare positively to the scc
+score. The results show this model is sufficiently accurate in predicting the score.
