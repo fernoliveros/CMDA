@@ -1,0 +1,53 @@
+#Edgar Oliveros
+#Inclass 9 
+#11/3/2014
+
+setwd("C;\\Users\\Fernando\\Documents\\CMDA\\R")
+
+load("fdata.rData")
+
+# Attach data to workspace
+attach(final)
+
+
+#1. Build a first logistic model using only SOM1, SOM2, SOM3, SOM4 and SOM5. What are the 
+#important features in this model? What is the interpretation of the SOM1 coefficient?
+
+model1 <- glm(disorder ~ som1 + som2 + som3 + som4 + som5, 
+data=final, family="binomial")
+summary(model1)
+exp(model1$coef)
+
+#Line above gets the odd ratios of the coeficients of model1.
+#It seems that it is able to predict disorder. Som1 has a higher
+#p value than the rest in model1. Therefore markers 2 3 4 and 5 
+#are more important features.
+
+#2. Build a second model using only SOM6, SOM7, SOM8, SOM9. What are the most important 
+#features in this model?
+
+model2 <- glm(disorder ~ som6 + som7 + som8 + som9, data=final, 
+family="binomial")
+summary(model2)
+exp(model2$coef)
+
+#Marker 8 has a higher p value than the other markers making the
+#other markers more important. However, note that marker 8 still
+#has a higher p value than marker 1 from the first model.
+
+#3. Build a third model using only SOM10, SOM11, SOM12, SOM13, SOM14. What are the most 
+#important features in this model?
+
+model3 <- glm(disorder ~ som10 + som11 + som12 + som13 + som14, 
+data=final, family="binomial")
+summary(model3)
+exp(model3$coef)
+
+#All of the markers have relatively low p values. The most important feature 
+#of this model to note is som12 having the lowest p value.
+
+#4. Compare the three models. Which one is better at predicting the likelihood of the disorder? 
+
+#I would say model1 is the best at predicting the likelihood of the disorder. This is 
+#due to the fact that it has more important features than other models. Also model3 has
+# a high std meaning that the data is crowded. 
